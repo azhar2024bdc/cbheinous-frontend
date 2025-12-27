@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-unused-vars */
+
 'use client'
 import { cn } from "@/lib/utils";
 import { Form, TimePicker } from "antd";

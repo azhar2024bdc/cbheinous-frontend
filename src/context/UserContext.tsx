@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { getCurrentUser } from '@/services/AuthService';
 import { IUser } from '@/types';
 import {

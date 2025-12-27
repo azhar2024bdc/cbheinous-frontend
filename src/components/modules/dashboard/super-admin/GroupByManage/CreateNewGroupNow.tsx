@@ -99,7 +99,7 @@ const CreateNewGroupNow = () => {
   const {
     handleSubmit,
     setValue,
-    formState: { errors, isSubmitting,isValid },
+    formState: { errors, isSubmitting },
   } = methods;
 
   const onSubmit = async (data: GroupBuyFormData) => {

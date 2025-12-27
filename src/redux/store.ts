@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 import { configureStore } from "@reduxjs/toolkit";
 // import storage from "redux-persist/lib/storage";

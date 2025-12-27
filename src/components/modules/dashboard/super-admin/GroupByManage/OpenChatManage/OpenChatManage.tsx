@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use client";
 
 import { OpenChatCard } from "@/components/ui/core/cards/productsCard/OpenChatCard";
@@ -154,6 +155,7 @@ const OpenChatManage = () => {
     setId(id);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleLike = (commentId: number) => {
     // Handle like logic here
   };

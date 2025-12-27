@@ -1,14 +1,13 @@
 "use client";
 
-import QuillEditor from "@/components/ui/core/editors/QuillEditor";
+
 import MyFormInput from "@/components/ui/core/MyForm/MyFormInput/MyFormInput";
 import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "antd";
-import Image from "next/image";
-import MyFormDatePicker from "@/components/ui/core/MyForm/MyFormDatePicker/MyFormDatePicker";
+
 import { toast } from "sonner";
 
 // Zod validation schema
@@ -23,9 +22,9 @@ const groupBuySchema = z.object({
 type GroupBuyFormData = z.infer<typeof groupBuySchema>;
 
 const CreateChatManage = () => {
-  const [description, setDescription] = useState("");
+
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+
 
   const methods = useForm<GroupBuyFormData>({
     resolver: zodResolver(groupBuySchema),
@@ -37,8 +36,8 @@ const CreateChatManage = () => {
 
   const {
     handleSubmit,
-    setValue,
-    formState: { errors, isSubmitting },
+
+    formState: { isSubmitting },
   } = methods;
 
   const onSubmit = async (data: GroupBuyFormData) => {
@@ -58,24 +57,10 @@ const CreateChatManage = () => {
     }
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      // Store the actual File object
-      setUploadedImage(file);
-
-      // Create preview URL for display
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const removeImage = () => {
     setUploadedImage(null);
-    setImagePreview(null);
+
   };
 
   return (

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 

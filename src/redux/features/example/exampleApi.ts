@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { baseApi } from "../../api/baseApi";
 
 const exampleApi = baseApi.injectEndpoints({

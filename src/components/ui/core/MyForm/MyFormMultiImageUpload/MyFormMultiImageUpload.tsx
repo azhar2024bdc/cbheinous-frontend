@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @next/next/no-img-element */
+
 import React, { useEffect, useRef, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -27,7 +28,7 @@ const MyFormMultiImageUpload = ({
   parentClassName = "",
   size = "medium",
 }: TMultiImageUploadProps) => {
-  const { control, setValue, resetField } = useFormContext();
+  const { control, setValue } = useFormContext();
   const [previews, setPreviews] = useState<string[]>([]);
   const [files, setFiles] = useState<File[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);

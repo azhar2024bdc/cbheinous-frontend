@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @next/next/no-img-element */
+
 import React, { ReactNode, useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { cn } from "@/lib/utils";
@@ -48,9 +49,9 @@ const MyFormImageUpload = ({
 
   // Remove image and reset field
   const handleRemoveImage = () => {
-    setPreview(null); // Clear preview
-    resetField(name); // Clear form value
-    setFileInputKey((prev) => prev + 1); // Force file input reset
+    setPreview(null); 
+    resetField(name); 
+    setFileInputKey((prev) => prev + 1); 
   };
 
   // Effect to set default value in the form when the component mounts or defaultValue changes
@@ -99,7 +100,7 @@ const MyFormImageUpload = ({
                 )}
 
                 <input
-                  key={fileInputKey} // Force reset of input field
+                  key={fileInputKey} 
                   id={name}
                   type="file"
                   accept="image/*"
