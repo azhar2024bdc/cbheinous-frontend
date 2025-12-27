@@ -13,16 +13,16 @@ export default {
         "green-primary": "#1BB68A",
         "green-light": "#E8F8F3",
         "gray-light": "#4B5563",
-        primary: "#9F00E9",
+        primary: "#E3B035",
         secondary: "#E85385",
-        "text-primary": "#2D2D2D",
-        "text-secondary": "#7C7D7F",
+        "text-primary": "#1A1A1A",
+        "text-secondary": "#636F85",
         danger: "#FF4C52",
         "border-color": "#DADADA",
       },
       container: {
         screens: {
-          DEFAULT: "1290px",
+          DEFAULT: "1440px",
         },
         center: true,
         padding: "1.2rem",
@@ -32,6 +32,13 @@ export default {
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+        geist: ["Geist Sans", "sans-serif"],
+        geistMono: ["Geist Mono", "monospace"],
+        poppins: ["Poppins", "sans-serif"],
+      },
+      boxShadow: {
+        allSide:
+          "0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)",
       },
     },
   },

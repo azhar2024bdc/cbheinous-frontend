@@ -3,9 +3,7 @@ import React, { ReactNode } from "react";
 const layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="">
-      {/* <NavBar /> */}
-      <div className=" font-poppins ">{children}</div>
-      {/* <Footer /> */}
+      <div className="font-poppins">{children}</div>
     </div>
   );
 };

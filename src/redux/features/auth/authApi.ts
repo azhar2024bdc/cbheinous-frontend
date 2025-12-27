@@ -117,42 +117,20 @@ const authApi = baseApi.injectEndpoints({
       providesTags: ["user"],
     }),
 
-    //  getUserStat: builder.query({
-    //   query: () => ({
-    //     url: "admin/dashboard/user-stat",
-    //     method: "GET",
-    //   }),
-    //   providesTags: ["user"],
-    // }),
 
-    //  getRevenueStat: builder.query({
-    //   query: (year) => ({
-    //     url: `/admin/dashboard/monthly-revenue-graph/${year}`,
-    //     method: "GET",
-    //   }),
-    //   providesTags: ["user"],
-    // }),
-
-    //  getEarningStat: builder.query({
-    //   query: () => ({
-    //     url: "/admin/dashboard/earning-stat",
-    //     method: "GET",
-    //   }),
-    //   providesTags: ["user"],
-    // }),
 
     getRevenueStat: builder.query<RevenueStatResponse, number>({
       query: (year) => ({
-        url: `/admin/revenue-stats/${year}`, 
+        url: `/admin/revenue-stats/${year}`,
         method: "GET",
       }),
-      providesTags: ["user"], 
+      providesTags: ["user"],
     }),
 
     // Earning Statistics Query
     getEarningStat: builder.query<EarningStatResponse, undefined>({
       query: () => ({
-        url: "/admin/earning-stats", 
+        url: "/admin/earning-stats",
         method: "GET",
       }),
       providesTags: ["user"],
@@ -161,7 +139,7 @@ const authApi = baseApi.injectEndpoints({
     // User Statistics Query
     getUserStat: builder.query<UserStatResponse, undefined>({
       query: () => ({
-        url: "/admin/user-stats", 
+        url: "/admin/user-stats",
         method: "GET",
       }),
       providesTags: ["user"],
@@ -185,7 +163,7 @@ const authApi = baseApi.injectEndpoints({
         return {
           url: `users/${userId}/block`,
           method: "PATCH",
-        };      
+        };
       },
       invalidatesTags: ["user"],
     }),
@@ -195,19 +173,19 @@ const authApi = baseApi.injectEndpoints({
           url: `users/${userId}/unblock`,
           method: "PATCH",
         };
-      }
-    })
-  //    useGetAllUsersQuery,
-  // useBlockUserMutation,
-  // useUnblockUserMutation,
-
-
+      },
+    }),
+    resendOtp: builder.mutation({
+      query: (userInfo) => {
+        return {
+          url: "users/resend-otp",
+          method: "POST",
+          body: userInfo,
+        };
+      },
+    }),
   }),
-
-
-
-  })
-
+});
 
 export const {
   useLoginMutation,
@@ -224,4 +202,5 @@ export const {
   useGetAllUsersQuery,
   useBlockUserMutation,
   useUnblockUserMutation,
+  useResendOtpMutation,
 } = authApi;
