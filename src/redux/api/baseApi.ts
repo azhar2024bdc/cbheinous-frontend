@@ -7,7 +7,7 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { logout, setUser } from "../features/auth/authSlice";
-import Swal from "sweetalert2";
+
 import { signOut } from "next-auth/react";
 
 const baseQuery = fetchBaseQuery({
@@ -33,18 +33,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   if (result.error?.status === 401) {
     try {
       const refreshToken = (api.getState() as RootState).auth.refresh_token;
-
-      // if (!refreshToken) {
-      //   api.dispatch(logout());
-      //   Swal.fire({
-      //     icon: "error",
-      //     title: "Session Expired",
-      //     text: "Please login again to continue",
-      //   });
-      //   return result;
-      // }
-
-      // Make a request to refresh the token
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}refresh-token`,
         {
@@ -64,26 +52,10 @@ const baseQueryWithRefreshToken: BaseQueryFn<
           setUser({ user, token: data.data.token, refresh_token: refreshToken })
         );
 
-        // Retry the original query with the new token
         result = await baseQuery(args, api, extraOptions);
       } else {
-        Swal.fire({
-          icon: "error",
-          title: "Session Expired",
-          text: "Please login again to continue",
-          showConfirmButton: false,
-          showCancelButton: true,
-          cancelButtonText: "Stay Logged Out",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            api.dispatch(logout());
-            signOut();
-          }
-          else if (result.isDismissed) {
-            api.dispatch(logout());
-            signOut();
-          }
-        });
+        api.dispatch(logout());
+        signOut();
       }
     } catch (error) {
       console.error("Error during token refresh:", error);
@@ -96,8 +68,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: [
-    "user", "example"
-  ],
+  tagTypes: ["user", "example"],
   endpoints: () => ({}),
 });
