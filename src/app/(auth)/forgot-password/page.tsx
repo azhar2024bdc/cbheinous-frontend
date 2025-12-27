@@ -1,11 +1,12 @@
 
-import VerifyOTPpage from "@/components/modules/common/auth/VerifyOTPpage";
+
+import { ForgotPasswordForm } from "@/components/modules/auth/forgot-password-form";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <VerifyOTPpage />
+        <ForgotPasswordForm/>
     </div>
   );
 };

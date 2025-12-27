@@ -99,7 +99,7 @@ export function ResetPasswordForm() {
                       : "text-gray-500"
                   }
                 >
-                  {currentPasswordStrength.minLength ? "✓" : "○"} At least 8
+                  {currentPasswordStrength.minLength ? "✓" : "X"} At least 8
                   characters
                 </div>
                 <div
@@ -109,7 +109,7 @@ export function ResetPasswordForm() {
                       : "text-gray-500"
                   }
                 >
-                  {currentPasswordStrength.hasUppercase ? "✓" : "○"} One
+                  {currentPasswordStrength.hasUppercase ? "✓" : "X"} One
                   uppercase letter
                 </div>
                 <div
@@ -119,7 +119,7 @@ export function ResetPasswordForm() {
                       : "text-gray-500"
                   }
                 >
-                  {currentPasswordStrength.hasLowercase ? "✓" : "○"} One
+                  {currentPasswordStrength.hasLowercase ? "✓" : "X"} One
                   lowercase letter
                 </div>
                 <div
@@ -129,7 +129,7 @@ export function ResetPasswordForm() {
                       : "text-gray-500"
                   }
                 >
-                  {currentPasswordStrength.hasNumber ? "✓" : "○"} One number
+                  {currentPasswordStrength.hasNumber ? "✓" : "X"} One number
                 </div>
                 <div
                   className={
@@ -138,7 +138,7 @@ export function ResetPasswordForm() {
                       : "text-gray-500"
                   }
                 >
-                  {currentPasswordStrength.hasSpecial ? "✓" : "○"} One special
+                  {currentPasswordStrength.hasSpecial ? "✓" : "X"} One special
                   character
                 </div>
               </div>

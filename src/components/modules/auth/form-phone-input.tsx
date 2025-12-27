@@ -211,7 +211,7 @@ export function FormPhoneInput<T extends FieldValues>({
                 </div>
 
                 {/* Country Code Dropdown Button */}
-                <div className="absolute left-10" ref={dropdownRef}>
+                <div className="absolute sm:left-10 " ref={dropdownRef}>
                   <button
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
@@ -236,7 +236,7 @@ export function FormPhoneInput<T extends FieldValues>({
 
                   {/* Dropdown Menu */}
                   {isOpen && (
-                    <div className="absolute z-50 left-0 top-full mt-1 w-80 bg-white border border-gray-300 rounded-lg shadow-lg max-h-72 overflow-hidden">
+                    <div className="absolute z-50 left-0 top-full mt-1 min-w-52 bg-white border border-gray-300 rounded-lg shadow-lg max-h-72 overflow-hidden">
                       <div className="p-2 border-b border-gray-200">
                         <input
                           type="text"
