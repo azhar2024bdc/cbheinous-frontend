@@ -138,17 +138,17 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   let menuItems: MenuItem[] = [];
 
-  if (role === "SUPER_ADMIN") {
+  if (role === "ADMIN") {
     menuItems = [
       {
         icon: TbLayoutDashboardFilled,
         text: "Dashboard",
-        path: "/dashboard/super-admin",
+        path: "/dashboard/admin",
       },
       {
         icon: Users,
         text: "User Manage",
-        path: "/dashboard/super-admin/user-management",
+        path: "/dashboard/admin/user-management",
       },
       {
         icon: MessageSquare,
@@ -158,19 +158,19 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         submenu: [
           {
             text: "Group Buy Manage",
-            path: "/dashboard/super-admin/group-buy-management",
+            path: "/dashboard/admin/group-buy-management",
           },
           {
             text: "Announcement Manage",
-            path: "/dashboard/super-admin/announcement-management",
+            path: "/dashboard/admin/announcement-management",
           },
           {
             text: "Learn Manage",
-            path: "/dashboard/super-admin/learn-management",
+            path: "/dashboard/admin/learn-management",
           },
           {
             text: "Open Chat Manage",
-            path: "/dashboard/super-admin/open-chat-management",
+            path: "/dashboard/admin/open-chat-management",
           },
         ],
       },
@@ -182,11 +182,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         submenu: [
           {
             text: "Admin Account Settings",
-            path: "/dashboard/super-admin/admin-account-settings",
+            path: "/dashboard/admin/admin-account-settings",
           },
           {
             text: "Moderator & Permission",
-            path: "/dashboard/super-admin/moderator-permission",
+            path: "/dashboard/admin/moderator-permission",
           },
         ],
       },
@@ -198,61 +198,61 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         submenu: [
           {
             text: "Privacy Policy Settings",
-            path: "/dashboard/super-admin/privacy-policy",
+            path: "/dashboard/admin/privacy-policy",
           },
           {
             text: "Terms & Condition Settings",
-            path: "/dashboard/super-admin/terms-condition",
+            path: "/dashboard/admin/terms-condition",
           },
           {
             text: "Data Policy Settings",
-            path: "/dashboard/super-admin/data-policy",
+            path: "/dashboard/admin/data-policy",
           },
         ],
       },
       {
         icon: HelpCircle,
         text: "Help & Support Manage",
-        path: "/dashboard/super-admin/help-support",
+        path: "/dashboard/admin/help-support",
       },
     ];
   }
-  if (role === "ADMIN") {
+  if (role === "SUPER_ADMIN") {
     menuItems = [
       {
         icon: TbLayoutDashboardFilled,
         text: "Dashboard",
-        path: "/admin",
+        path: "/super-admin",
       },
       {
         icon: Briefcase,
         text: "Projects",
-        path: "/admin/projects",
+        path: "/super-admin/projects",
       },
       {
         icon: FileCode,
         text: "Cost Code",
-        path: "/admin/cost-code",
+        path: "/super-admin/cost-code",
       },
       {
         icon: MonitorSmartphone,
         text: "Equipment",
-        path: "/admin/equipment",
+        path: "/super-admin/equipment",
       },
       {
         icon: ShieldCheck,
         text: "Sub Admin",
-        path: "/admin/sub-admin",
+        path: "/super-admin/sub-admin",
       },
       {
         icon: Users2,
         text: "Supervisor",
-        path: "/admin/supervisor",
+        path: "/super-admin/supervisor",
       },
       {
         icon: UserCheck,
         text: "Employee",
-        path: "/admin/employee",
+        path: "/super-admin/employee",
       },
     ];
   }

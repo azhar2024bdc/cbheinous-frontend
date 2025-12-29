@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { Menu, Bell, MessageSquare, X } from "lucide-react";
 import Logo from "../logo/Logo";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
-  // Simulate user authentication - set to true to show user menu
+
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -29,35 +31,33 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#home"
+            <Link
+              href="/"
               className="text-yellow-500 font-medium hover:text-yellow-600 transition"
             >
               Home
-            </a>
-            <a
-              href="#make-offer"
+            </Link>
+            <Link
+              href="/make-offer"
               className="text-gray-600 hover:text-gray-900 transition"
             >
               Make Offer
-            </a>
-            <a
-              href="#subscription"
+            </Link>
+            <Link
+              href="/subscriptions"
               className="text-gray-600 hover:text-gray-900 transition"
             >
               Subscription
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/contact-us"
               className="text-gray-600 hover:text-gray-900 transition"
             >
               Contact us
-            </a>
+            </Link>
           </div>
 
-          {/* Right Side Icons & Buttons */}
           <div className="flex items-center gap-4">
-            {/* Notification & Message Icons */}
             <button className="p-2 text-gray-600 hover:text-gray-900 transition">
               <Bell className="w-5 h-5" />
             </button>
@@ -65,24 +65,23 @@ export default function Navbar() {
               <MessageSquare className="w-5 h-5" />
             </button>
 
-            {/* Conditional Rendering: User Menu or Sign In/Up */}
             {isUserLoggedIn ? (
               <div className="relative">
                 <button
                   onClick={toggleUserMenu}
                   className="flex items-center focus:outline-none"
                 >
-                  <img
+                  <Image
                     src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                     alt="User"
                     className="w-10 h-10 rounded-full border-2 border-gray-200 hover:border-yellow-500 transition"
+                    height={40}
+                    width={40}
                   />
                 </button>
 
-                {/* Dropdown Menu */}
                 {isUserMenuOpen && (
                   <>
-                    {/* Backdrop */}
                     <div
                       className="fixed inset-0 z-10"
                       onClick={() => setIsUserMenuOpen(false)}
@@ -148,23 +147,23 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-3">
-              <a href="#home" className="text-yellow-500 font-medium py-2">
+              <Link href="" className="text-yellow-500 font-medium py-2">
                 Home
-              </a>
+              </Link>
               <a
-                href="#make-offer"
+                href="/make-offer"
                 className="text-gray-600 hover:text-gray-900 py-2"
               >
                 Make Offer
               </a>
               <a
-                href="#subscription"
+                href="/subscriptions"
                 className="text-gray-600 hover:text-gray-900 py-2"
               >
                 Subscription
               </a>
               <a
-                href="#contact"
+                href="/contact-us"
                 className="text-gray-600 hover:text-gray-900 py-2"
               >
                 Contact us

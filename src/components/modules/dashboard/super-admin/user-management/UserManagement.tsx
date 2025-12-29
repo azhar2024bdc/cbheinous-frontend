@@ -398,15 +398,15 @@ export default function UserManagement() {
               <path
                 d="M14.166 14.1666L17.4993 17.5"
                 stroke="#374151"
-                stroke-width="1.25"
-                stroke-linecap="round"
+                strokeWidth="1.25"
+                strokeLinecap="round"
                 stroke-linejoin="round"
               />
               <path
                 d="M15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667Z"
                 stroke="#374151"
-                stroke-width="1.25"
-                stroke-linecap="round"
+                strokeWidth="1.25"
+                strokeLinecap="round"
                 stroke-linejoin="round"
               />
             </svg>

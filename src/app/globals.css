@@ -6,6 +6,7 @@
   --primary-color: #E3B035;
   --secondary-color: #fc6609; 
   --danger-color: #FF4C52;
+  --primary-bg: #FFFEFA;
 }
 
 .slim-scroll::-webkit-scrollbar {
