@@ -4,19 +4,17 @@ import {
   MyDataTable,
   PaginationInfo,
   StatusBadge,
-  TableAction,
   TableColumn,
 } from "@/components/ui/core/DataTable/MyDataTable";
 import {
   useGetAllUsersQuery,
-  useBlockUserMutation,
-  useUnblockUserMutation,
+
 } from "@/redux/features/auth/authApi";
 import { ConfigProvider, Input, Select } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
-import { toast } from "sonner";
+import {  useState } from "react";
+
 
 interface UserData {
   id: string;
@@ -46,16 +44,15 @@ interface TransformedUserData {
   role: string;
 }
 
-export default function UserManagement() {
+export default function HelpAndSupport() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [toggleMode, setToggleMode] = useState(false);
-  const [loadingUserIds, setLoadingUserIds] = useState<string[]>([]);
+  const [loadingUserIds,] = useState<string[]>([]);
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const router = useRouter();
 
-  const [blockUser] = useBlockUserMutation();
-  const [unblockUser] = useUnblockUserMutation();
+
 
   const { data, isLoading, isFetching } = useGetAllUsersQuery({
     page: currentPage,
@@ -86,7 +83,7 @@ export default function UserManagement() {
   //   return [];
   // }, [data]);
 
-   const fakeUsers = [
+  const fakeUsers = [
     {
       id: "45777",
       name: "Mehedi Hasan",
@@ -94,7 +91,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=12",
       country: "Bangladesh",
       city: "Dhaka",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 34,
       catalogClick: 34,
@@ -107,7 +104,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=5",
       country: "USA",
       city: "New York",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 45,
       catalogClick: 52,
@@ -120,7 +117,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=33",
       country: "UAE",
       city: "Dubai",
-      status: "BLOCKED",
+      status: "UNREAD",
       role: "USER",
       groupBuyClick: 12,
       catalogClick: 18,
@@ -133,7 +130,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=9",
       country: "Canada",
       city: "Toronto",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 67,
       catalogClick: 78,
@@ -146,7 +143,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=15",
       country: "India",
       city: "Mumbai",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 23,
       catalogClick: 29,
@@ -159,7 +156,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=10",
       country: "Spain",
       city: "Madrid",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 89,
       catalogClick: 95,
@@ -172,7 +169,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=13",
       country: "UK",
       city: "London",
-      status: "BLOCKED",
+      status: "UNREAD",
       role: "USER",
       groupBuyClick: 8,
       catalogClick: 12,
@@ -185,7 +182,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=20",
       country: "Bangladesh",
       city: "Chittagong",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 56,
       catalogClick: 61,
@@ -198,7 +195,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=14",
       country: "Australia",
       city: "Sydney",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 41,
       catalogClick: 47,
@@ -211,7 +208,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=24",
       country: "France",
       city: "Paris",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 73,
       catalogClick: 82,
@@ -224,7 +221,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=17",
       country: "Egypt",
       city: "Cairo",
-      status: "BLOCKED",
+      status: "UNREAD",
       role: "USER",
       groupBuyClick: 5,
       catalogClick: 9,
@@ -237,7 +234,7 @@ export default function UserManagement() {
       image: "https://i.pravatar.cc/150?img=16",
       country: "USA",
       city: "Los Angeles",
-      status: "ACTIVE",
+      status: "REPLIED",
       role: "USER",
       groupBuyClick: 92,
       catalogClick: 98,
@@ -246,7 +243,6 @@ export default function UserManagement() {
   ];
 
   const columns: TableColumn[] = [
-   
     {
       key: "createdDate",
       label: "Created Date",
@@ -281,8 +277,26 @@ export default function UserManagement() {
       key: "email",
       label: "Mobile Number",
       className: "text-gray-600",
+     
     },
- 
+    {
+      key: "id",
+      label: "Action",
+      className: "text-gray-600",
+       render(value, row) {
+        return (
+          <div>
+            <button
+              className="bg-[#E3E3E3]  py-1 px-4 rounded-full"
+              onClick={() => handleViewDetails(row)}
+            >
+              View
+            </button>
+          </div>
+        );
+      },
+    },
+
     {
       key: "status",
       label: "Status",
@@ -303,77 +317,13 @@ export default function UserManagement() {
     },
   };
 
-  const handleBlockUser = async (row: TransformedUserData) => {
-    setLoadingUserIds((prev) => [...prev, row.id]);
-    try {
-      const res = await blockUser(row.id).unwrap();
-      if (res?.success) {
-        toast.success(
-          res.message || res?.data?.message || "User blocked successfully."
-        );
-      }
-    } catch (error: any) {
-      toast.error(
-        error?.data?.message ||
-          error?.message ||
-          "An error occurred while blocking the user."
-      );
-    } finally {
-      setLoadingUserIds((prev) => prev.filter((id) => id !== row.id));
-    }
-  };
 
-  const handleUnblockUser = async (row: TransformedUserData) => {
-    setLoadingUserIds((prev) => [...prev, row.id]);
-    try {
-      const res = await unblockUser(row.id).unwrap();
-      if (res?.success) {
-        toast.success(
-          res.message || res?.data?.message || "User unblocked successfully."
-        );
-      }
-    } catch (error: any) {
-      toast.error(
-        error?.data?.message ||
-          error?.message ||
-          "An error occurred while unblocking the user."
-      );
-    } finally {
-      setLoadingUserIds((prev) => prev.filter((id) => id !== row.id));
-    }
-  };
 
   const handleViewDetails = (row: TransformedUserData) => {
     router.push(`/dashboard/admin/user-management/${row.id}`);
   };
 
-  const actions = (row: TransformedUserData): TableAction[] => {
-    const actionList: TableAction[] = [];
-
-    // Block/Unblock action based on user status
-    if (row.status === "ACTIVE" || row.status === "Active") {
-      actionList.push({
-        label: "Block",
-        onClick: () => handleBlockUser(row),
-      });
-    } else if (row.status === "BLOCKED" || row.status === "Blocked") {
-      actionList.push({
-        label: "Unblock",
-        onClick: () => handleUnblockUser(row),
-      });
-    }
-
-    actionList.push({
-      label: "View Details",
-      onClick: () => handleViewDetails(row),
-    });
-
-    return actionList;
-  };
-
-  const handleSearch = (value: string) => {
-   
-  };
+  const handleSearch = (value: string) => {};
 
   return (
     <div className="p-6">
@@ -416,9 +366,9 @@ export default function UserManagement() {
             theme={{
               components: {
                 Select: {
-                  optionSelectedBg: "var(--primary-color)", // highlighted option background
-                  optionSelectedColor: "#fff", // highlighted option text color
-                  controlOutline: "var(--primary-color)", // border outline on focus
+                  optionSelectedBg: "var(--primary-color)", 
+                  optionSelectedColor: "#fff",
+                  controlOutline: "var(--primary-color)", 
                 },
               },
             }}
@@ -432,8 +382,8 @@ export default function UserManagement() {
               className="w-24 h-11"
             >
               <Select.Option value="all">All Users</Select.Option>
-              <Select.Option value="ACTIVE">Active</Select.Option>
-              <Select.Option value="BLOCKED">Blocked</Select.Option>
+              <Select.Option value="REPLIED">REPLIED</Select.Option>
+              <Select.Option value="UNREAD">UNREAD</Select.Option>
               <Select.Option value="PENDING">Pending</Select.Option>
             </Select>
           </ConfigProvider>
@@ -448,7 +398,6 @@ export default function UserManagement() {
           toggleMode={toggleMode}
           onToggleMode={() => setToggleMode(!toggleMode)}
           isLoading={isLoading || isFetching}
-          actions={actions as any}
           className="!bg-transparent"
           mutationLoadingIds={loadingUserIds}
         />

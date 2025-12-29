@@ -1,28 +1,37 @@
 "use client";
 
+import React from "react";
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  CreditCard,
+} from "lucide-react";
+import Image from "next/image";
+import { BackIcon } from "@/assets/icons/ioncs";
+import { useRouter } from "next/navigation";
 
-import React from 'react';
-import { ChevronLeft, User, Mail, Phone, MapPin, Calendar, CreditCard } from 'lucide-react';
-import Image from 'next/image';
-
-export default function UserInformationCard() {
+export default function UserDetails() {
+  const router = useRouter();
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      <div className="max-w-md mx-auto">
+    <div className=" ">
+      <button
+        onClick={() => router.back()}
+        className="mb-4 p-2 hover:bg-gray-200 rounded-lg transition-colors"
+      >
+        <BackIcon />
+      </button>
 
-        <button className="mb-4 p-2 hover:bg-gray-200 rounded-lg transition-colors">
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-
-        {/* User Information Card */}
+      <div className="max-w-2xl border rounded-xl ">
         <div className="bg-white rounded-xl shadow-sm p-6">
           <h2 className="text-xl font-semibold mb-6">User Information</h2>
 
-          {/* Profile Picture */}
           <div className="flex justify-center mb-6">
             <div className="w-24 h-24 rounded-full bg-gradient-to-br from-pink-300 to-pink-400 flex items-center justify-center overflow-hidden">
-              <Image 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces" 
+              <Image
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces"
                 alt="User profile"
                 className="w-full h-full object-cover"
                 width={200}
@@ -31,7 +40,6 @@ export default function UserInformationCard() {
             </div>
           </div>
 
-          {/* Information Grid */}
           <div className="grid grid-cols-2 gap-4">
             {/* Full Name */}
             <div>

@@ -1,8 +1,11 @@
+// import SubscriptionManage from '@/components/modules/dashboard/admin/subscription-manage/SubscriptionManage'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      {/* <SubscriptionManage/> */}
+    </div>
   )
 }
 

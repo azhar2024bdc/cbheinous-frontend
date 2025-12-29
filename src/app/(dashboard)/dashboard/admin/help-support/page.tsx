@@ -1,8 +1,11 @@
+import HelpAndSupport from '@/components/modules/dashboard/admin/help-and-support/HelpAndSupport'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <HelpAndSupport/>
+    </div>
   )
 }
 

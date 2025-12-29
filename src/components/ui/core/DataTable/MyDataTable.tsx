@@ -32,12 +32,6 @@ export interface TableAction {
   disabled?: any;
 }
 
-// export type TableAction = {
-//   label: string | ((row: any) => string);
-//   onClick: (row: any) => void;
-//   variant?: "default" | "destructive" | "outline" | ...;
-// };
-
 export interface PaginationInfo {
   currentPage: number;
   totalItems: number;
@@ -132,7 +126,10 @@ export function MyDataTable({
             <Dropdown
               overlay={menu}
               trigger={["click"]}
+              placement="bottomRight"
               disabled={rowActions.length === 0}
+              className=""
+              overlayClassName="custom-dropdown"
             >
               <Button
                 type="text"
@@ -167,7 +164,6 @@ export function MyDataTable({
     return cols;
   }, [columns, actions, isLoading, mutationLoadingIds]);
 
-  // Generate skeleton data when loading
   const displayData = useMemo(() => {
     if (isLoading) {
       return Array.from({ length: itemsPerPage }, (_, i) => ({
@@ -217,14 +213,13 @@ export function MyDataTable({
 
       <div className="sm:flex items-center justify-between mt-4">
         <div className="flex items-center gap-2">
-          <span>Showing</span>
           <ConfigProvider
             theme={{
               components: {
                 Select: {
-                  optionSelectedBg: "var(--primary-color)", 
-                  optionSelectedColor: "#fff", 
-                  controlOutline: "var(--primary-color)", 
+                  optionSelectedBg: "var(--primary-color)",
+                  optionSelectedColor: "#fff",
+                  controlOutline: "var(--primary-color)",
                 },
               },
             }}
@@ -244,6 +239,10 @@ export function MyDataTable({
             />
           </ConfigProvider>
           {/* <span>of {totalItems} records</span> */}
+
+          <span>
+            Showing {currentPage * itemsPerPage} of {totalItems} records
+          </span>
         </div>
         <ConfigProvider
           theme={{
@@ -258,7 +257,7 @@ export function MyDataTable({
                 itemActiveBg: "var(--primary-color)",
                 itemLinkBg: "#fff", // default background
                 // itemLinkColor: "var(--primary-color)",
-                colorText: "#333", // regular text color
+                colorText: "#333",
               },
             },
           }}
@@ -359,17 +358,32 @@ export const AvatarCell = ({ src, name }: { src?: string; name: string }) => (
 );
 
 export const StatusBadge = ({ status }: { status: string }) => {
-  const statusLower = status?.toLowerCase();
+  const statusLower = status.toLowerCase();
   let color: string = "default";
 
-  if (statusLower === "active" || statusLower === "approved") color = "green";
-  else if (statusLower === "blocked" || statusLower === "rejected")
+  if (
+    statusLower === "active" ||
+    statusLower === "approved" ||
+    statusLower === "paid" ||
+    statusLower === "completed" ||
+    statusLower === "delivered" ||
+    statusLower === "accepted" ||
+    statusLower === "confirmed" ||
+    statusLower === "shipped" ||
+    statusLower === "replied"
+  )
+    color = "green";
+  else if (
+    statusLower === "blocked" ||
+    statusLower === "rejected" ||
+    statusLower === "cancelled"
+  )
     color = "red";
-  else if (statusLower === "pending") color = "gold";
+  else if (statusLower === "pending" || statusLower === "unread") color = "gold";
 
   return (
     <Tag className="w-24 py-1 text-center" color={color}>
-      {status?.slice(0, 10) + (status?.length > 10 ? "..." : "")}
+      {status.slice(0, 10) + (status.length > 10 ? "..." : "")}
     </Tag>
   );
 };
