@@ -1,8 +1,6 @@
 "use client"
 
-// import ChartSection from "./ChartSection"
-import RealChart from "./RealChart"
-import RevenueCards from "./RevenueCard"
+import InfoChart from "./InfoChart"
 import StatsCards from "./StateCard"
 
 
@@ -12,11 +10,7 @@ export default function Dashboard() {
       {/* Stats Cards */}
       <StatsCards />
 
-      {/* Revenue Cards */}
-      <RevenueCards />
-
-      {/* Chart Section */}
-      <RealChart/>
+      <InfoChart />
     </div>
   )
 }

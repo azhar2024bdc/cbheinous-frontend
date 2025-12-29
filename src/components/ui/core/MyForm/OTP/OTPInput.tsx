@@ -167,7 +167,7 @@ OTPInputProps) {
   return (
     <div className="flex items-center justify-center ">
       {loading && <OTPloader />}
-      <div className=" rounded-lg shadow-allSide  p-8 sm:w-[450px] w-[320px]">
+      <div className=" rounded-lg shadow-all-side  p-8 sm:w-[450px] w-[320px]">
         {/* <div className="text-center mb-8">
           <h1 className="text-xl font-semibold text-gray-900 mb-2">{title}</h1>
           <p className="text-sm text-gray-600 leading-relaxed">{description}</p>

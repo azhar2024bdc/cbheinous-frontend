@@ -359,7 +359,7 @@ export const AvatarCell = ({ src, name }: { src?: string; name: string }) => (
 );
 
 export const StatusBadge = ({ status }: { status: string }) => {
-  const statusLower = status.toLowerCase();
+  const statusLower = status?.toLowerCase();
   let color: string = "default";
 
   if (statusLower === "active" || statusLower === "approved") color = "green";
@@ -369,7 +369,7 @@ export const StatusBadge = ({ status }: { status: string }) => {
 
   return (
     <Tag className="w-24 py-1 text-center" color={color}>
-      {status.slice(0, 10) + (status.length > 10 ? "..." : "")}
+      {status?.slice(0, 10) + (status?.length > 10 ? "..." : "")}
     </Tag>
   );
 };

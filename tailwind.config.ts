@@ -37,8 +37,8 @@ export default {
         poppins: ["Poppins", "sans-serif"],
       },
       boxShadow: {
-        allSide:
-          "0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)",
+        "all-side":
+          "0 2px 15px -3px rgba(0,0,0,0.07), 0 10px 20px -2px rgba(0,0,0,0.04)",
       },
     },
   },

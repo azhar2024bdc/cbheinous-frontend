@@ -21,10 +21,7 @@ import {
   Users,
   Users2,
   X,
-  Settings,
-  FileText,
   HelpCircle,
-  MessageSquare,
   Bell,
   ChevronDown,
   ChevronRight,
@@ -111,7 +108,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const isActive = (href: string) => {
     if (
       href === "/dashboard/super-admin" ||
-      href === "/admin" ||
+      href === "/dashboard/admin" ||
       href === "/sub-admin" ||
       href === "/supervisor" ||
       href === "/employee"
@@ -150,65 +147,27 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         text: "User Manage",
         path: "/dashboard/admin/user-management",
       },
+ 
       {
-        icon: MessageSquare,
-        text: "Community",
-        expandable: true,
-        key: "communityManage",
-        submenu: [
-          {
-            text: "Group Buy Manage",
-            path: "/dashboard/admin/group-buy-management",
-          },
-          {
-            text: "Announcement Manage",
-            path: "/dashboard/admin/announcement-management",
-          },
-          {
-            text: "Learn Manage",
-            path: "/dashboard/admin/learn-management",
-          },
-          {
-            text: "Open Chat Manage",
-            path: "/dashboard/admin/open-chat-management",
-          },
-        ],
+        icon: Users,
+        text: "Offer Request",
+        path: "/dashboard/admin/offer-requests",
       },
       {
-        icon: Settings,
-        text: "Settings",
-        expandable: true,
-        key: "settings",
-        submenu: [
-          {
-            text: "Admin Account Settings",
-            path: "/dashboard/admin/admin-account-settings",
-          },
-          {
-            text: "Moderator & Permission",
-            path: "/dashboard/admin/moderator-permission",
-          },
-        ],
+        icon: Users,
+        text: "Subscription Manage",
+        path: "/dashboard/admin/subscription-manage",
+      },
+ 
+      {
+        icon: HelpCircle,
+        text: "Terms & Privacy",
+        path: "/dashboard/admin/terms-condition",
       },
       {
-        icon: FileText,
-        text: "Policy Settings",
-        expandable: true,
-        key: "policySettings",
-        submenu: [
-          {
-            text: "Privacy Policy Settings",
-            path: "/dashboard/admin/privacy-policy",
-          },
-          {
-            text: "Terms & Condition Settings",
-            path: "/dashboard/admin/terms-condition",
-          },
-          {
-            text: "Data Policy Settings",
-            path: "/dashboard/admin/data-policy",
-          },
-        ],
+        icon: HelpCircle,
+        text: "Negotiate",
+        path: "/dashboard/admin/negotiate",
       },
       {
         icon: HelpCircle,
@@ -379,16 +338,17 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#1E6A92",
+          colorPrimary: `var(--primary-bg)`,
+          
         },
       }}
     >
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#F8F8F8]  border-gray-200 transform transition-transform duration-200 ease-in-out lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
+        <div className="flex items-center justify-between h-24 px-4 bg-primary-bg border-b  ">
           <Link
             href="/dashboard/super-admin"
             className="flex items-center justify-center w-full"
@@ -398,9 +358,10 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
               width={100}
               height={100}
               alt="logo"
-              className="object-contain w-[90px] h-auto"
+              className="object-contain w-[90px] h-auto "
               priority
               unoptimized
+              
             />
           </Link>
           <button
@@ -410,7 +371,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             <X className="w-5 h-5 text-gray-500" />
           </button>
         </div>
-        <nav className="p-4 space-y-1 overflow-y-auto h-[calc(100vh-140px)]">
+        <nav className="p-4 space-y-1 overflow-y-auto h-[calc(100vh-140px)] ">
           {menuItems?.map((item, index) => (
             <div key={index}>
               {item.expandable ? (
@@ -469,7 +430,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           ))}
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200">
+        <div className="absolute bottom-0 left-0 right-0 p-4  border-t border-gray-200">
           <button
             onClick={() => {
               logoutHandler(dispatch, router);
@@ -482,9 +443,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </aside>
 
-      <div className="lg:pl-64 bg-primary-bg min-h-[calc(100vh-64px)]">
-        <header className="fixed top-0 right-0 left-0 lg:left-64 bg-white border-b border-gray-200 z-40">
-          <div className="flex items-center justify-between h-16 px-5">
+      <div className="lg:pl-64 bg-primary-bg min-h-[calc(100vh-64px)] ">
+        <header className="fixed top-0 right-0 left-0 lg:left-64  bg-primary-bg border-b  z-40 ">
+          <div className="flex items-center justify-between h-24  px-5">
             <button
               onClick={() => setSidebarOpen(true)}
               className="p-2 rounded-md hover:bg-gray-100 block lg:hidden"
@@ -493,7 +454,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             </button>
 
             <h4 className="flex items-center justify-center text-2xl font-semibold">
-              Welcome back, {user?.name}!
+              Dashboard
             </h4>
 
             <div className="flex items-center space-x-3">
@@ -525,7 +486,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </header>
 
-        <main className="p-5 mt-16 bg-dashboard-content-bg">{children}</main>
+        <main className="p-5 mt-24 ">{children}</main>
       </div>
 
       {sidebarOpen && (
