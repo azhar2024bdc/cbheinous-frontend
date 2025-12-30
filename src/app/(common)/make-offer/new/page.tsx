@@ -1,10 +1,12 @@
-import ContactUs from '@/components/modules/common/contact-us/ContactUs'
+
+
+import NewOffer from '@/components/modules/common/make-offer/new/NewOffer'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-        <ContactUs/>
+        <NewOffer/>
     </div>
   )
 }

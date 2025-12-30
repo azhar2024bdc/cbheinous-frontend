@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 
 export default function OfferManage() {
-  const [selectedAction, setSelectedAction] = useState<string | null>(null);
+  const [, setSelectedAction] = useState<string | null>(null);
 
   const handleAction = (action: string) => {
     setSelectedAction(action);

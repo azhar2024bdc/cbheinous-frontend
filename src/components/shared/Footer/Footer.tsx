@@ -1,51 +1,115 @@
 "use client";
 
-import { Facebook, Linkedin } from "lucide-react";
+;
 import Logo from "../logo/Logo";
+import Link from "next/link";
 
 export default function Footer() {
-    const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-[#F1F2F2] -mt-[80px] xl:mt-[20px] 2xl:mt-0">
+    <footer className="bg-[#F1F2F2]   2xl:mt-0">
       <div className="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left: Logo */}
-          <Logo height={60} width={90}/>
+          <Logo height={60} width={90} />
 
           {/* Right: Social Media Icons */}
-          <div className="flex items-center gap-3">
-            <a
+          <div className="flex items-center">
+            <Link
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+              className="rotate-[-4deg] size-[62px] bg-white rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors"
               aria-label="Facebook"
             >
-              <Facebook className="w-5 h-5 text-white" fill="white" />
-            </a>
-            <a
+              <svg
+                width="43"
+                height="43"
+                viewBox="0 0 43 43"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M22.4095 40.6947C33.2674 39.9355 41.454 30.5179 40.6947 19.66C39.9355 8.80208 30.5179 0.615501 19.66 1.37476C8.80208 2.13402 0.615501 11.5516 1.37476 22.4095C2.13402 33.2674 11.5516 41.454 22.4095 40.6947Z"
+                  fill="white"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M19.9286 5.22138C28.662 4.61068 36.237 11.1955 36.8477 19.929C37.4584 28.6624 30.8736 36.2374 22.1401 36.8481C13.4067 37.4588 5.83172 30.874 5.22101 22.1405C4.61031 13.407 11.1951 5.83208 19.9286 5.22138Z"
+                  fill="url(#paint0_linear_10361_3712)"
+                />
+                <path
+                  d="M24.1876 36.5717L23.3334 24.3572L26.7769 24.1164L26.9328 19.7855L23.0328 20.0582L22.8882 17.906C22.8097 16.7848 22.8743 16.1768 24.4848 16.0642L26.6378 15.9136L26.3371 11.614L22.8928 11.8548C18.7556 12.1441 17.4455 14.3313 17.6908 17.8387L17.8712 20.4195L15.2923 20.5999L15.5929 24.8992L18.1719 24.7188L19.0138 36.7594C20.0326 36.8894 21.0787 36.9225 22.1422 36.8481C22.8292 36.8001 23.5124 36.7078 24.1876 36.5717Z"
+                  fill="white"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_10361_3712"
+                    x1="19.9084"
+                    y1="4.93324"
+                    x2="22.2344"
+                    y2="38.1967"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#00B2FF" />
+                    <stop offset="1" stop-color="#006AFF" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </Link>
+            <Link
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
+              className="rotate-[4deg] size-[62px] bg-white rounded-xl flex items-center justify-center hover:bg-gray-800 transition-colors"
               aria-label="Twitter/X"
             >
               <svg
-                className="w-4 h-4 text-white"
-                fill="currentColor"
-                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="21"
+                viewBox="0 0 30 31"
+                fill="none"
               >
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                <path
+                  d="M17.8323 13.1351L29.0519 0.978436L26.497 0.889214L16.7549 11.4447L9.65752 0.301168L1.0332 0L11.7659 16.851L-0.000421778 29.5991L2.55471 29.6884L12.8426 18.5414L20.3379 30.3094L28.9623 30.6105L17.8316 13.1351L17.8323 13.1351ZM14.1906 17.0808L13.1022 15.4022L4.44182 2.04484L8.36636 2.18189L15.3553 12.9617L16.4438 14.6403L25.5286 28.6524L21.6041 28.5154L14.1906 17.0815L14.1906 17.0808Z"
+                  fill="black"
+                />
               </svg>
-            </a>
+            </Link>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors"
+              className="rotate-[-4deg] size-[62px] bg-white rounded-xl flex items-center justify-center hover:bg-blue-800 transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-5 h-5 text-white" fill="white" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+              >
+                <path
+                  d="M14.7056 0.0390941C5.996 0.648131 -0.570738 8.2023 0.0382985 16.9119C0.647335 25.6216 8.2015 32.1883 16.9111 31.5793C25.6208 30.9702 32.1876 23.4161 31.5785 14.7064C30.9694 5.99679 23.4151 -0.569934 14.7056 0.0390941ZM12.134 23.7275L8.67154 23.9696L7.88932 12.7833L11.3518 12.5412L12.134 23.7275ZM9.50162 11.1985C8.37081 11.2776 7.38947 10.4175 7.30976 9.27762C7.23004 8.13762 8.08227 7.14938 9.21295 7.07031C10.3436 6.99125 11.325 7.85128 11.4047 8.99127C11.4845 10.1312 10.6324 11.1194 9.50162 11.1985ZM25.1097 22.8202L21.664 23.0611L21.2534 17.1892C21.1408 15.5787 20.4662 14.7225 19.1927 14.8116C17.8068 14.9085 17.1482 15.8954 17.2582 17.4686L17.6688 23.3405L14.3479 23.5727L13.5657 12.3864L16.8866 12.1542L16.9919 13.6608C16.9919 13.6608 17.8617 11.7431 20.2336 11.5773C22.6056 11.4114 24.4049 12.741 24.6144 15.7372L25.1097 22.8202Z"
+                  fill="url(#paint0_linear_10361_3719)"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_10361_3719"
+                    x1="3.87748"
+                    y1="5.4378"
+                    x2="27.7393"
+                    y2="26.1806"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#2489BE" />
+                    <stop offset="1" stop-color="#0575B3" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </a>
           </div>
         </div>
