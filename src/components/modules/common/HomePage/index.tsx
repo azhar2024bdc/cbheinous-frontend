@@ -6,10 +6,10 @@ import Link from "next/link";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="h-screen">
       <div
         style={{ backgroundImage: `url(${homepage.src})` }}
-        className="h-[calc(100vh-100px)] bg-cover  bg-top -z-10 mt-10 "
+        className=" bg-cover bg-red-600  h-full bg-top -z-10 sm:mt-10 mt-5 "
       >
         <div className="container mx-auto">
           <div className="max-w-[607px] mx-auto ">
