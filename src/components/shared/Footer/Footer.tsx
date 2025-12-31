@@ -1,19 +1,24 @@
 "use client";
 
-;
+import { usePathname } from "next/navigation";
 import Logo from "../logo/Logo";
 import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+
   return (
-    <footer className="bg-[#F1F2F2]   2xl:mt-0">
+    <footer
+      className={`bg-[#F1F2F2] ${
+        pathname === "/" ? "-mt-12 md:-mt-20" : "mt-0"
+      }`}
+    >
       <div className="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left: Logo */}
           <Logo height={60} width={90} />
 
-   
           <div className="flex items-center">
             <Link
               href="https://facebook.com"

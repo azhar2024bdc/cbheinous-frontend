@@ -1,15 +1,25 @@
+"use client";
 
 import React from "react";
 
 import homepage from "@/assets/images/homepage-bg.png";
+import homepageMobile from "@/assets/images/homepage-mobile.png";
 import Link from "next/link";
 
 const HomePage = () => {
+  function isMobileScreen() {
+    return window.innerWidth <= 768;
+  }
+
   return (
-    <div className="h-screen">
+    <div className="sm:h-screen h-[500px]">
       <div
-        style={{ backgroundImage: `url(${homepage.src})` }}
-        className=" bg-cover bg-red-600  h-full bg-top -z-10 sm:mt-10 mt-5 "
+        style={{
+          backgroundImage: `url(${
+            isMobileScreen() ? homepageMobile.src : homepage.src
+          })`,
+        }}
+        className=" bg-cover bg-top h-full -z-10 sm:mt-10 mt-5 "
       >
         <div className="container mx-auto">
           <div className="max-w-[607px] mx-auto ">

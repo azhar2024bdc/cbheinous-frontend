@@ -16,7 +16,7 @@ import { toast } from "sonner";
 import Image from "next/image";
 import Link from "next/link";
 import { useGetMeQuery } from "@/redux/features/auth/authApi";
-import { useCreateSubscriptionsMutation } from "@/redux/features/subscriptions/subscriptionsApi";
+// import { useCreateSubscriptionsMutation } from "@/redux/features/subscriptions/subscriptionsApi";
 
 interface BookingModalProps {
   open: boolean;
@@ -41,8 +41,8 @@ export function PaymentModal({
     cardName: "",
     rememberMe: false,
   });
-  const [purchase, { isLoading: isPurchasing }] =
-    useCreateSubscriptionsMutation();
+  // const [purchase, { isLoading: isPurchasing }] =
+  //   useCreateSubscriptionsMutation();
 
   const { isLoading: getMeLoading } = useGetMeQuery(undefined);
 
@@ -109,17 +109,17 @@ export function PaymentModal({
         subscriptionId: subscriptionId,
       };
 
-      const res = await purchase(newData).unwrap();
+      // const res = await purchase(newData).unwrap();
 
-      if (res?.success) {
-        toast.success(res?.message || "Thanks for subscribe");
-        setIsModalVisible(true);
-        onCancel();
-        // onUpgrade?.();
-        if (onSuccess) {
-          onSuccess();
-        }
-      }
+      // if (res?.success) {
+      //   toast.success(res?.message || "Thanks for subscribe");
+      //   setIsModalVisible(true);
+      //   onCancel();
+      //   // onUpgrade?.();
+      //   if (onSuccess) {
+      //     onSuccess();
+      //   }
+      // }
     } catch (error) {
       type ErrorResponse = {
         data?: {
@@ -210,7 +210,8 @@ export function PaymentModal({
                 type="submit"
                 className="w-full text-white py-3 bg-primary rounded-md hover:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary mt-6 flex items-center justify-center"
               >
-                {isPurchasing ? <Loader className="animate-spin" /> : "Pay Now"}
+                {/* {isPurchasing ? <Loader className="animate-spin" /> : "Pay Now"} */}
+                Pay Now
               </button>
             </div>
           </form>
