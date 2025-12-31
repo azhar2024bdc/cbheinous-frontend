@@ -10,7 +10,6 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
-
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -89,24 +88,27 @@ export default function Navbar() {
 
                     {/* Menu */}
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-20">
-                      <a
-                        href="#profile"
+                      <Link
+                        href="/profile-info"
+                        onClick={() => setIsUserMenuOpen(false)}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
                       >
                         Profile
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         href="#settings"
+                        onClick={() => setIsUserMenuOpen(false)}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
                       >
                         Settings
-                      </a>
-                      <a
-                        href="#my-offers"
+                      </Link>
+                      <Link
+                        href="/my-offer-list"
+                        onClick={() => setIsUserMenuOpen(false)}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition"
                       >
                         My Offers
-                      </a>
+                      </Link>
                       <hr className="my-2 border-gray-200" />
                       <button
                         onClick={handleLogout}
