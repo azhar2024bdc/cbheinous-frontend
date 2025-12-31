@@ -5,10 +5,23 @@ import { Menu, Bell, MessageSquare, X } from "lucide-react";
 import Logo from "../logo/Logo";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  const pathname = usePathname();
+
+  // const isHome = pathname === "/";
+  const isActive = (href: string) => {
+    if (pathname.startsWith(href)) {
+      const nextChar = pathname[href.length];
+      return nextChar === "/" || nextChar === undefined;
+    }
+
+    return false;
+  };
 
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
@@ -21,8 +34,15 @@ export default function Navbar() {
     alert("Logged out successfully!");
   };
 
+  const menus = [
+    { href: "/", label: "Home" },
+    { href: "/make-offer", label: "Make Offer" },
+    { href: "/subscriptions", label: "Subscriptions" },
+    { href: "/contact-us", label: "Contact Us" },
+  ];
+
   return (
-    <nav className="bg-white py-4 fixed top-0 left-0 right-0 shadow-sm border-b border-gray-200 mb-32 z-50">
+    <nav className="bg-white py-4 fixed top-0 left-0 right-0 shadow-sm border-b border-gray-200 mb-32 z-[999]">
       <div className="container mx-auto ">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -30,7 +50,20 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link
+            {menus.map((menu) => (
+              <Link
+                key={menu.href}
+                href={menu.href}
+                className={` transition ${
+                  isActive(menu.href)
+                    ? "text-primary hover:text-primary font-semibold"
+                    : "text-text-primary"
+                }`}
+              >
+                {menu.label}
+              </Link>
+            ))}
+            {/* <Link
               href="/"
               className="text-yellow-500 font-medium hover:text-yellow-600 transition"
             >
@@ -53,7 +86,7 @@ export default function Navbar() {
               className="text-gray-600 hover:text-gray-900 transition"
             >
               Contact us
-            </Link>
+            </Link> */}
           </div>
 
           <div className="flex items-center gap-4">
@@ -149,27 +182,39 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-3">
-              <Link href="" className="text-yellow-500 font-medium py-2">
+              {menus.map((menu) => (
+                <Link
+                  key={menu.href}
+                  href={menu.href}
+                  className={` py-2 ${
+                    isActive(menu.href) ? "text-primary text-primary/70 font-semibold" : "text-text-primary"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {menu.label}
+                </Link>
+              ))}
+              {/* <Link href="" className="text-yellow-500 font-medium py-2">
                 Home
               </Link>
-              <a
+              <Link
                 href="/make-offer"
                 className="text-gray-600 hover:text-gray-900 py-2"
               >
                 Make Offer
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/subscriptions"
                 className="text-gray-600 hover:text-gray-900 py-2"
               >
                 Subscription
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact-us"
                 className="text-gray-600 hover:text-gray-900 py-2"
               >
                 Contact us
-              </a>
+              </Link> */}
 
               {!isUserLoggedIn && (
                 <div className="flex flex-col gap-2 pt-3 border-t border-gray-200">
