@@ -17,7 +17,7 @@ export default {
         secondary: "#E85385",
         "text-primary": "#1A1A1A",
         "text-secondary": "#636F85",
-        danger: "#FF4C52",
+        danger: "#F75555",
         "border-color": "#DADADA",
       },
       container: {

@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Left: Logo */}
           <Logo height={60} width={90} />
 
-          {/* Right: Social Media Icons */}
+   
           <div className="flex items-center">
             <Link
               href="https://facebook.com"
@@ -34,8 +34,8 @@ export default function Footer() {
                   fill="white"
                 />
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M19.9286 5.22138C28.662 4.61068 36.237 11.1955 36.8477 19.929C37.4584 28.6624 30.8736 36.2374 22.1401 36.8481C13.4067 37.4588 5.83172 30.874 5.22101 22.1405C4.61031 13.407 11.1951 5.83208 19.9286 5.22138Z"
                   fill="url(#paint0_linear_10361_3712)"
                 />
@@ -52,8 +52,8 @@ export default function Footer() {
                     y2="38.1967"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#00B2FF" />
-                    <stop offset="1" stop-color="#006AFF" />
+                    <stop stopColor="#00B2FF" />
+                    <stop offset="1" stopColor="#006AFF" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -105,8 +105,8 @@ export default function Footer() {
                     y2="26.1806"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#2489BE" />
-                    <stop offset="1" stop-color="#0575B3" />
+                    <stop stopColor="#2489BE" />
+                    <stop offset="1" stopColor="#0575B3" />
                   </linearGradient>
                 </defs>
               </svg>

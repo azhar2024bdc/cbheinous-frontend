@@ -117,8 +117,6 @@ const authApi = baseApi.injectEndpoints({
       providesTags: ["user"],
     }),
 
-
-
     getRevenueStat: builder.query<RevenueStatResponse, number>({
       query: (year) => ({
         url: `/admin/revenue-stats/${year}`,
@@ -184,6 +182,15 @@ const authApi = baseApi.injectEndpoints({
         };
       },
     }),
+    changePassword: builder.mutation({
+      query: (userInfo) => {
+        return {
+          url: "users/change-password",
+          method: "POST",
+          body: userInfo,
+        };
+      },
+    }),
   }),
 });
 
@@ -203,4 +210,5 @@ export const {
   useBlockUserMutation,
   useUnblockUserMutation,
   useResendOtpMutation,
+  useChangePasswordMutation,
 } = authApi;

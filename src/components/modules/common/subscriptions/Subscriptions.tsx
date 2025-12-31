@@ -13,7 +13,7 @@ interface Plan {
 }
 
 const Subscriptions = () => {
-  const [plans, setPlans] = useState<Plan[]>([
+  const [plans, ] = useState<Plan[]>([
     {
       id: "1",
       name: "Basic plan",
@@ -67,7 +67,7 @@ const Subscriptions = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-12 md:gap-y-0 md:gap-x-6  max-w-5xl mx-auto mt-4">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-12 md:gap-y-0 md:gap-x-12  max-w-5xl mx-auto mt-4">
           {plans.map((plan) => (
             <div
               key={plan.id}
@@ -117,7 +117,7 @@ const Subscriptions = () => {
                     : "bg-text-secondary text-white hover:bg-gray-800"
                 }`}
               >
-                Edit Now
+               Get started
               </button>
             </div>
           ))}
