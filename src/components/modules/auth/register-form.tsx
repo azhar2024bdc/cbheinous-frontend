@@ -22,7 +22,6 @@ import LocationInput from "./locationInput";
 import { FormCheckbox } from "@/components/ui/core/MyForm/me/form-checkbox";
 import { FormPhoneInput } from "./form-phone-input";
 
-
 interface RegisterFormProps {
   onSubmit?: (data: RegisterFormData) => void;
   onLoginClick?: () => void;
@@ -54,6 +53,7 @@ export function RegisterForm({ loading = false }: RegisterFormProps) {
       latitude: 0,
       longitude: 0,
       agreeToTerms: false,
+      isWishToSellHome: false,
     },
     mode: "onChange",
   });
@@ -78,7 +78,7 @@ export function RegisterForm({ loading = false }: RegisterFormProps) {
     const newData = {
       name: data.name,
       email: data.email,
-      phone: data.phone, // Add this
+      phone: data.phone,
       password: data.password,
       location: data.location,
       latitude: data.latitude,
@@ -152,7 +152,20 @@ export function RegisterForm({ loading = false }: RegisterFormProps) {
           required
         />
 
-        {/* Password Field */}
+        {/* Location Input */}
+        <div className="grid w-full items-center gap-3 mt-5">
+          <LocationInput
+            name="location"
+            placeholder="Choose your location"
+            onChange={handleLocationChange}
+          />
+
+          {errors.location && (
+            <p className="text-sm text-red-500">{errors.location.message}</p>
+          )}
+        </div>
+
+
         <FormInput
           name="password"
           control={control}
@@ -268,17 +281,25 @@ export function RegisterForm({ loading = false }: RegisterFormProps) {
           </div>
         )}
 
-        {/* Location Input */}
-        <div className="grid w-full items-center gap-3 mt-5">
-          <LocationInput
-            name="location"
-            placeholder="Choose your location"
-            onChange={handleLocationChange}
-          />
+        {/* I want to sell my property */}
+        <div className="!my-2">
+          <div className="flex   items-start space-x-2 ">
+            <FormCheckbox
+              name="isWishToSellHome"
+              control={control}
+              checked={watchedValues.isWishToSellHome}
+              onChange={(e) =>
+                setValue("isWishToSellHome", e.target.checked, {
+                  shouldValidate: true,
+                })
+              }
+              className="mt-1"
+            />
+            <span className="text-sm text-gray-600 mt-1">
+              I want to sell my property{" "}
+            </span>
+          </div>
 
-          {errors.location && (
-            <p className="text-sm text-red-500">{errors.location.message}</p>
-          )}
         </div>
 
         {/* Terms Checkbox */}

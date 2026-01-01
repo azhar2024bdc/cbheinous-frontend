@@ -32,6 +32,7 @@ const UserProfile = () => {
       name: "",
       gender: "",
       address: "",
+      isWishToSellHome: false,
     },
   });
 
@@ -41,6 +42,7 @@ const UserProfile = () => {
         name: loggedInUser.name || "",
         gender: loggedInUser.gender || "",
         address: loggedInUser.description || "",
+        isWishToSellHome: loggedInUser.isWishToSellHome || false,
       });
     }
   }, [loggedInUser, methods]);
@@ -52,6 +54,7 @@ const UserProfile = () => {
       name: data.name,
       gender: data.gender,
       description: data.address,
+      isWishToSellHome: data.isWishToSellHome,
     };
 
     formData.append("bodyData", JSON.stringify(newData));
@@ -140,6 +143,16 @@ const UserProfile = () => {
           options={[
             { label: "Male", value: "MALE" },
             { label: "Female", value: "FEMALE" },
+          ]}
+          // defaultValue={loggedInUser?.gender}
+        />
+
+        <FormRadio
+          name="isWishToSellHome"
+          label="Do you wish to sell your home:"
+          options={[
+            { label: "Yes", value: "yes" },
+            { label: "No", value: "No" },
           ]}
           // defaultValue={loggedInUser?.gender}
         />

@@ -229,13 +229,7 @@ export function LoginForm() {
                 />
                 <p>Remember me</p>
               </div>
-              {/* <button
-                type="button"
-                onClick={() => router.push("/forgot-password")}
-                className="text-sm text-primary hover:text-gray-800 hover:underline"
-              >
-                Forgot Password?
-              </button> */}
+
             </div>
           </div>
         </div>

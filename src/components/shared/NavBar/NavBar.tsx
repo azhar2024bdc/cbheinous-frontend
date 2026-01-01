@@ -6,6 +6,7 @@ import Logo from "../logo/Logo";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { toast } from "sonner";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ export default function Navbar() {
   const handleLogout = () => {
     setIsUserLoggedIn(false);
     setIsUserMenuOpen(false);
-    alert("Logged out successfully!");
+    toast.success("Logged out successfully!");
   };
 
   const menus = [
@@ -155,12 +156,16 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="hidden md:flex items-center gap-3">
-                <button className="px-4 py-2 text-gray-700 hover:text-gray-900 transition">
-                  sign In
-                </button>
-                <button className="px-6 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
-                  sign Up
-                </button>
+                <Link href={`/login`}>
+                  <button className="px-4 py-2 text-gray-700 hover:text-gray-900 transition">
+                    sign In
+                  </button>
+                </Link>
+                <Link href={`/register`}>
+                  <button className="px-6 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
+                    sign Up
+                  </button>
+                </Link>
               </div>
             )}
 
@@ -187,7 +192,9 @@ export default function Navbar() {
                   key={menu.href}
                   href={menu.href}
                   className={` py-2 ${
-                    isActive(menu.href) ? "text-primary text-primary/70 font-semibold" : "text-text-primary"
+                    isActive(menu.href)
+                      ? "text-primary text-primary/70 font-semibold"
+                      : "text-text-primary"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -218,12 +225,16 @@ export default function Navbar() {
 
               {!isUserLoggedIn && (
                 <div className="flex flex-col gap-2 pt-3 border-t border-gray-200">
-                  <button className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50">
-                    sign In
-                  </button>
-                  <button className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
-                    sign Up
-                  </button>
+                  <Link href={`/login`}>
+                    <button className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50">
+                      sign In
+                    </button>
+                  </Link>
+                  <Link href={`/register`}>
+                    <button className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
+                      sign Up
+                    </button>
+                  </Link>
                 </div>
               )}
             </div>

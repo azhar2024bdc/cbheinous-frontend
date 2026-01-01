@@ -31,6 +31,10 @@ export const registerSchema = z
     latitude: z.number().optional(),
     longitude: z.number().optional(),
     agreeToTerms: z.boolean().refine((val) => val === true),
+    isWishToSellHome: z
+      .boolean()
+      .refine((val) => val === true)
+      .optional(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",

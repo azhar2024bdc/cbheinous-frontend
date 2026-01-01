@@ -28,7 +28,7 @@ const HomePage = () => {
             </h1>
             <Link
               className="bg-primary rounded py-[20px] mx-auto px-[30px] mt-12 block w-max"
-              href={""}
+              href={"/make-offer"}
             >
               <div className="flex items-center gap-2">
                 <button className="text-[16px] text-text-primary font-medium ">
